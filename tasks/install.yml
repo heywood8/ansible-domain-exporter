@@ -16,7 +16,7 @@
 - name: download domain exporter binary to local folder
   become: false
   unarchive:
-    src: "https://github.com/caarlos0/domain_exporter/releases/download/v{{ domain_exporter_version }}/domain_exporter_linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}.tar.gz"
+    src: "https://github.com/caarlos0/domain_exporter/releases/download/v{{ domain_exporter_version }}/domain_exporter_linux_{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}.tar.gz"
     dest: "/tmp"
     remote_src: true
     creates: "/tmp/domain_exporter-{{ domain_exporter_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}/domain_exporter"
