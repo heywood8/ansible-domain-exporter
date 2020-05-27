@@ -1,25 +1,21 @@
 {{ ansible_managed | comment }}
 [Unit]
-Description=Blackbox Exporter
+Description=Domain Exporter
 After=network-online.target
 StartLimitInterval=0
 StartLimitIntervalSec=0
 
 [Service]
 Type=simple
-PIDFile=/var/run/blackbox_exporter.pid
-User=blackbox-exp
-Group=blackbox-exp
+PIDFile=/var/run/domain_exporter.pid
+User=domain-exp
+Group=domain-exp
 PermissionsStartOnly=true
 ExecReload=/bin/kill -HUP $MAINPID
-ExecStart=/usr/local/bin/blackbox_exporter \
-  --config.file=/etc/blackbox_exporter.yml \
-  {% for flag, flag_value in blackbox_exporter_cli_flags.items() -%}
-  --{{ flag }}={{ flag_value }} \
-  {% endfor -%}
-  --web.listen-address={{ blackbox_exporter_web_listen_address }}
+ExecStart=/usr/local/bin/domain_exporter \
+  --web.listen-address={{ domain_exporter_web_listen_address }}
 
-SyslogIdentifier=blackbox_exporter
+SyslogIdentifier=domain_exporter
 KillMode=process
 Restart=always
 RestartSec=5
@@ -33,7 +29,7 @@ RemoveIPC=true
 RestrictSUIDSGID=true
 
 AmbientCapabilities=CAP_NET_RAW
-{% if blackbox_exporter_systemd_version | int >= 232 %}
+{% if domain_exporter_systemd_version | int >= 232 %}
 ProtectControlGroups=true
 ProtectKernelModules=true
 ProtectKernelTunables=yes
