@@ -2,7 +2,7 @@
 galaxy_info:
   author: Roman Demachkovych, Pawel Krupa, Nikita Lopatin
   description: Prometheus Domain Exporter
-  role_name: heywood8.domain-exporter
+  role_name: domain-exporter
   license: MIT
   company: none
   min_ansible_version: 2.7
