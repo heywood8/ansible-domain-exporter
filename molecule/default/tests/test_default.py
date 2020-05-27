@@ -7,9 +7,9 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 
 
 @pytest.mark.parametrize("files", [
-    "/etc/blackbox_exporter.yml",
-    "/etc/systemd/system/blackbox_exporter.service",
-    "/usr/local/bin/blackbox_exporter"
+    "/etc/domain_exporter.yml",
+    "/etc/systemd/system/domain_exporter.service",
+    "/usr/local/bin/domain_exporter"
 ])
 def test_files(host, files):
     f = host.file(files)
@@ -18,11 +18,11 @@ def test_files(host, files):
 
 
 def test_service(host):
-    s = host.service("blackbox_exporter")
+    s = host.service("domain_exporter")
     assert s.is_running
     # assert s.is_enabled
 
 
 def test_socket(host):
-    s = host.socket("tcp://0.0.0.0:9115")
+    s = host.socket("tcp://0.0.0.0:9222")
     assert s.is_listening
