@@ -1,6 +1,6 @@
 ---
 galaxy_info:
-  author: Roman Demachkovych, Pawel Krupa
+  author: Roman Demachkovych, Pawel Krupa, Nikita Lopatin
   description: Prometheus domain Exporter
   license: MIT
   company: none

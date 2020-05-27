@@ -1,8 +1,0 @@
----
-- name: Run role
-  hosts: all
-  any_errors_fatal: true
-  roles:
-    - ansible-domain-exporter
-  vars:
-    domain_exporter_web_listen_address: "127.0.0.1:9222"
