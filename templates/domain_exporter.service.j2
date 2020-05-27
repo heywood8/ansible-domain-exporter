@@ -13,7 +13,7 @@ Group=domain-exp
 PermissionsStartOnly=true
 ExecReload=/bin/kill -HUP $MAINPID
 ExecStart=/usr/local/bin/domain_exporter \
-  --web.listen-address={{ domain_exporter_web_listen_address }}
+  -b "{{ domain_exporter_web_listen_address }}"
 
 SyslogIdentifier=domain_exporter
 KillMode=process
