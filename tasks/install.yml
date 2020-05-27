@@ -19,7 +19,7 @@
     src: "https://github.com/caarlos0/domain_exporter/releases/download/v{{ domain_exporter_version }}/domain_exporter_linux_{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}.tar.gz"
     dest: "/tmp"
     remote_src: true
-    creates: "/tmp/domain_exporter-{{ domain_exporter_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}/domain_exporter"
+    creates: "/tmp/domain_exporter"
   register: _download_binary
   until: _download_binary is succeeded
   retries: 5
@@ -29,7 +29,7 @@
 
 - name: propagate domain exporter binary
   copy:
-    src: "/tmp/domain_exporter-{{ domain_exporter_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}/domain_exporter"
+    src: "/tmp/domain_exporter"
     dest: "/usr/local/bin/domain_exporter"
     mode: 0750
     owner: domain-exp
